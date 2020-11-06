@@ -9,3 +9,4 @@ class ACCIDENT:
     light: str
     road_conditions: str
     fatalities: int
+    inj_index: float
