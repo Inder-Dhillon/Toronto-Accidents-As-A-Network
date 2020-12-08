@@ -4,7 +4,8 @@ from dataclasses import dataclass
 class ACCIDENT:
     """Class for an accident."""
     acc_id: int
-    date: str
+    year: str
+    time: int
     visibility: str
     light: str
     road_conditions: str
