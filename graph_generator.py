@@ -93,4 +93,6 @@ def create_tor_graph(filter_df = "None", weighted=True):
     weights = getEdgeWeights(given_df, G)
     nx.set_edge_attributes(G, 0, 'w')
     nx.set_edge_attributes(G, weights, 'w')
+  G = ox.add_edge_speeds(G)
+  G = ox.add_edge_travel_times(G)
   return G
