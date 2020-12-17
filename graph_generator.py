@@ -62,6 +62,10 @@ def ksi_data_preprocessing(G, filter_df):
   ksi_df["ACCIDENT"] = ksi_df.apply(lambda x: ACCIDENT(x["ACCNUM"], x["YEAR"], x["TIME"], x["VISIBILITY"], x["LIGHT"], x["RDSFCOND"], x["FATALITIES"], x["INJ_INDEX"]), axis=1)
   if filter_df == "VIS-CLEAR":
     return ksi_df.loc[ksi_df.VISIBILITY.isin(["Clear"])]
+  if filter_df == "VIS-RAIN":
+    return ksi_df.loc[ksi_df.VISIBILITY.isin(["Rain"])]
+  if filter_df == "VIS-SNOW":
+    return ksi_df.loc[ksi_df.VISIBILITY.isin(["Snow"])]
   elif filter_df == "VIS-NCLEAR":
     return ksi_df.loc[~ksi_df.VISIBILITY.isin(["Clear"])]
   elif filter_df == "RD-DRY":
