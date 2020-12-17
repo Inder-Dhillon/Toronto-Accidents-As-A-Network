@@ -73,6 +73,9 @@ def ksi_data_preprocessing(G, filter_df):
   elif filter_df == "TIME-RUSH":
     ksi_df['TIME'] = ksi_df['TIME'].astype('int')
     return ksi_df.loc[(ksi_df.TIME.between(630,930, inclusive=True)) | (ksi_df.TIME.between(1500,1900, inclusive=True))]
+  elif filter_df == "TIME-NRUSH":
+    ksi_df['TIME'] = ksi_df['TIME'].astype('int')
+    return ksi_df.loc[(ksi_df.TIME.between(0,629, inclusive=True)) | (ksi_df.TIME.between(1901,2400, inclusive=True)) | (ksi_df.TIME.between(931,1499, inclusive=True))]
   elif filter_df == "TIME-DAY":
     ksi_df['TIME'] = ksi_df['TIME'].astype('int')
     return ksi_df.loc[ksi_df.TIME.between(701,1900, inclusive=True)]
