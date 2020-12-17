@@ -78,3 +78,21 @@ def plot_top_4_communities(G, communities):
     else:
       ec.append("gray")
   return ox.plot_graph(G, bgcolor='white', node_size=1.0, node_color='gray', edge_color=ec, edge_linewidth=1.0, edge_alpha=1, dpi=300, figsize=(15,15))
+
+
+def average_injury_index(G, community):
+  total_idx = 0
+  for node in community:
+    for accident in G.nodes()[node]['accident_list']:
+      total_idx = total_idx + accident.inj_index
+  return total_idx/len(community)
+
+
+def average_accident_weight(G, community):
+  total_weight = 0
+  edge_count = 0
+  for edge in list(G.edges.data()):
+    if (edge[0] in community) or (edge[1] in community):
+      total_weight = total_weight + edge[2]['w']
+      edge_count = edge_count + 1
+  return total_weight/edge_count
